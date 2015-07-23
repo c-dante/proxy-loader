@@ -3,6 +3,7 @@
 define(function(require)
 {
 	var apiDependency = require('./apiDependency');
+	var otherDependency = require('./otherDependency');
 
 	var API = function(base)
 	{
@@ -12,6 +13,11 @@ define(function(require)
 	API.prototype.makeRequest = function()
 	{
 		return apiDependency.doAction(this.path);
+	};
+
+	API.prototype.otherRequest = function()
+	{
+		return otherDependency.otherAction(this.path);
 	};
 
 	return API;

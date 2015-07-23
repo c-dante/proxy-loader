@@ -7,7 +7,9 @@ var API = require('./service/api');
 // Build a new API
 var api = new API('//path');
 
+console.log('- - - CommonJS Module - - -');
 console.log(api.makeRequest());
+console.log(api.otherRequest());
 
 // Mock the dependency
 var mockApiDependency = {
@@ -17,7 +19,17 @@ var mockApiDependency = {
 	}
 };
 
-// Proxy things
+var mockOtherDependency = {
+	otherAction: function(path)
+	{
+		return 'I\'m a mocked AMD exports dependency. ' + path;
+	}
+};
+
+/**
+ * CommonJS
+ */
+console.log('- - - Mocked CommonJS Module - - -');
 var ProxyAPIFactory = require('proxy!./service/api');
 var ProxyAPI = ProxyAPIFactory({
 	'./apiDependency': mockApiDependency
@@ -27,24 +39,18 @@ var mockedApi = new ProxyAPI('//mockPath');
 
 console.log(ProxyAPIFactory);
 console.log(mockedApi.makeRequest());
+console.log(mockedApi.otherRequest());
 
-// Proxy AMD modules
+/**
+ * AMD, other dependency
+ */
+console.log('- - - Mocked AMD Module - - -');
 var PromiseAMDFactory = require('proxy!./service/amdApi');
 var ProxyAmdApi = PromiseAMDFactory({
-	'./apiDependency': mockApiDependency
+	'./otherDependency': mockOtherDependency
 });
 
 var mockedAmdApi = new ProxyAmdApi('//amdPath');
 
 console.log(mockedAmdApi.makeRequest());
-
-
-// AMD with module.exports syntax
-var PromiseAMDDefineFactory = require('proxy!./service/amdDefineApi');
-var ProxyAmdDefineApi = PromiseAMDDefineFactory({
-	'./apiDependency': mockApiDependency
-});
-
-var mockedAmdDefineApi = new ProxyAmdDefineApi('//amdDefinePath');
-
-console.log(mockedAmdDefineApi.makeRequest());
+console.log(mockedAmdApi.otherRequest());

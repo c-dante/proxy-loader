@@ -28,7 +28,7 @@ var proxyLoader = function(source)
 		cacheToRequire.push('\'' + key + '\': require(\'' + value.name + '\')');
 	}
 
-	results.push(cacheToRequire.join('\n'));
+	results.push(cacheToRequire.join(',\n'));
 	results.push('};');
 
 	// The injector function
@@ -63,7 +63,15 @@ var proxyLoader = function(source)
 			// Update getResult to support AMD
 			getResult = function()
 			{
-				var result = moduleDef(require, module);
+				var result;
+				if (moduleDef instanceof Function)
+				{
+					result = moduleDef(require, module.exports, module);
+				}
+				else if (moduleDef instanceof Object)
+				{
+					result = moduleDef;
+				}
 
 				// Support AMD modules which export through module.exports inside a define
 				if (!result && module.exports)

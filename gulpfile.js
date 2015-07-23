@@ -59,7 +59,7 @@ gulp.task('compile', ['build'], function(cb)
 
 gulp.task('build', function(cb)
 {
-	return runSequence('clean', ['js'], 'test-cli', cb);
+	return runSequence('clean', ['js', 'test-cli'], cb);
 });
 
 gulp.task('default', function(cb)
