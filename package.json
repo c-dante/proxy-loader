@@ -1,9 +1,10 @@
 {
-  "name": "gulp-boilerplate",
+  "name": "proxy-loader",
   "version": "0.0.2",
   "author": "Dante Federici <c.dante.federici@gmail.com",
   "license": "MIT",
-  "description": "Starting place for gulp-built projects. Check branches for framework-specific setups (angular, node, ...)",
+  "description": "Injector wrapper for modules. Mock specific require dependencies with ease.",
+  "main": "./src/index.js",
   "dependencies": {},
   "devDependencies": {
     "lodash": "~3.10.0",
