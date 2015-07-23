@@ -10,7 +10,7 @@ var api = new API('//path');
 console.log(api.makeRequest());
 
 // Proxy things
-var ProxyAPIFactory = require('proxy-loader!./service/api');
+var ProxyAPIFactory = require('proxy!./service/api');
 
 var mockApiDependency = {
 	doAction: function(path)
@@ -27,3 +27,14 @@ var mockedApi = new ProxyAPI('//mockpath');
 
 console.log(ProxyAPIFactory);
 console.log(mockedApi.makeRequest());
+
+// Proxy AMD modules
+var PromiseAMDFactory = require('proxy!./service/amdApi');
+
+var ProxyAmdApi = PromiseAMDFactory({
+	'./apiDependency': mockApiDependency
+});
+
+var mockedAmdApi = new ProxyAmdApi('//amdpath');
+
+console.log(mockedAmdApi.makeRequest());

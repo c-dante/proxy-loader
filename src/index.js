@@ -34,7 +34,7 @@ var proxyLoader = function(source)
 	// The injector function
 	function injector(inject)
 	{
-		var module = {exports: {}};
+		// Override require
 		var require = function(moduleName)
 		{
 			if (inject[moduleName])
@@ -49,11 +49,25 @@ var proxyLoader = function(source)
 			return cache[moduleName];
 		};
 
+		// Global module exporters
+		var module = {exports: {}};
+		var getResult = function()
+		{
+			return module.exports;
+		};
+		var define = function(moduleDef)
+		{
+			return getResult = function()
+			{
+				return moduleDef(require, module);
+			};
+		};
+
 		return (function()
 		{
 			__INJECTION_POINT__
 
-			return module.exports;
+			return getResult();
 		})();
 	}
 

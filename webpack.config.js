@@ -3,7 +3,7 @@
 var config = {
 	resolveLoader: {
 		alias: {
-			'proxy-loader': __dirname + '/src/index.js'
+			proxy: __dirname + '/src/index.js'
 		}
 	},
 	devtool: 'source-map',
