@@ -1,10 +1,12 @@
 'use strict';
 
+var amdNoDeps = require('./amdNoDeps');
 var apiDependency = require('./apiDependency');
 var otherDependency = require('./otherDependency');
 
 var API = function(base)
 {
+	console.log('New API base: ' + base + ', amdNoDeps.config: ' + amdNoDeps.config);
 	this.path = base;
 };
 

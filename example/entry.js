@@ -26,6 +26,10 @@ var mockOtherDependency = {
 	}
 };
 
+var mockAmdNoDeps = {
+	config: 'mocked no-deps AMD'
+};
+
 /**
  * CommonJS
  */
@@ -47,7 +51,8 @@ console.log(mockedApi.otherRequest());
 console.log('- - - Mocked AMD Module - - -');
 var PromiseAMDFactory = require('proxy!./service/amdApi');
 var ProxyAmdApi = PromiseAMDFactory({
-	'./otherDependency': mockOtherDependency
+	'./otherDependency': mockOtherDependency,
+	'./amdNoDeps': mockAmdNoDeps
 });
 
 var mockedAmdApi = new ProxyAmdApi('//amdPath');
