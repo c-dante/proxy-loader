@@ -51,18 +51,34 @@ var proxyLoader = function(source)
 
 		// Global module exporters
 		var module = {exports: {}};
+
+		// A getter that can switch between CommonJS or AMD
 		var getResult = function()
 		{
 			return module.exports;
 		};
+
 		var define = function(moduleDef)
 		{
-			return getResult = function()
+			// Update getResult to support AMD
+			getResult = function()
 			{
-				return moduleDef(require, module);
-			};
-		};
+				var result = moduleDef(require, module);
 
+				// Support AMD modules which export through module.exports inside a define
+				if (!result && module.exports)
+				{
+					return module.exports;
+				}
+
+				return result;
+			};
+
+			return getResult;
+		};
+		define.amd = true;
+
+		// Finally, run the module with the overridden define and module objects.
 		return (function()
 		{
 			__INJECTION_POINT__
