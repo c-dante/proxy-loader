@@ -35,6 +35,37 @@ $> node ./bin/main.bundle.js
 * [Squire.js](https://github.com/iammerrick/Squire.js/)
 * [proxyquire](https://github.com/thlorenz/proxyquire)
 
+## Isn't this exactly like inject-loader?
+Yes. Except webpack makes a new dependency and module for each loader string. That means each of the following are completely new dependencies:
+```
+var mockA = require('inject!./myModule');
+var mockB = require('inject?lib/something!./myModule');
+var mockC = require('inject?-lib/something!./myModule');
+```
+
+I also did not like having to specify what I'll be mocking at require time. For unit tests, I prefer:
+```
+var ProxyFactory = require('proxy!./module/under/test');
+
+it('Should test some things', function()
+{
+  var mock = ProxyFactory({
+  // override only some things
+  });
+  
+  // use mock
+});
+
+it('Should test some different things', function()
+{
+  var mock = ProxyFactory({
+  // override different things
+  });
+  
+  // use mock
+});
+```
+
 ## Methodology
 1. Use [webpack](webpack.github.io) to compile the application together.
 2. For unit testing, wrap modules to mock in `proxy-loader`. This is similar to the [inject-loader](https://github.com/plasticine/inject-loader).
