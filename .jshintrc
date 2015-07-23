@@ -1,0 +1,22 @@
+{
+	"browser": true,
+	"bitwise": true,
+	"curly": true,
+	"eqeqeq": true,
+	"noarg": true,
+	"noempty": true,
+	"nonew": true,
+	"undef": true,
+	"node": true,
+	"camelcase": true,
+	"latedef": true,
+	"strict": true,
+	"globalstrict": true,
+	"devel": true,
+	"globals": {
+		"define": false,
+		"require": false,
+		"describe": false,
+		"it": false
+	}
+}

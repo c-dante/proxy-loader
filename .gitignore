@@ -1,0 +1,11 @@
+# Library + build tools
+bower_components
+node_modules
+
+# Build files
+build
+bin
+
+# IDE files
+*.sublime*
+.idea
