@@ -3,6 +3,33 @@ I really didn't like existing dependency injecting loaders and mocking when usin
 
 Using [webpack](webpack.github.io) as a bundler with resolve loaders and plugins is great. Testing with that is less-great.
 
+# Use
+Really targeted toward webpack. Have the `proxy-loader` module installed, set up `moduleLoaders` if needed.
+```
+// Get the factory-wrapped module
+var MyModuleFactory = require('proxy-loader!./my/module');
+
+// Create instances of your module with overridden require statements
+var myModuleMocked = MyModuleFactory({
+  '../services/some/dep': mockDependency,
+  '../services/some/other/dep': {
+    otherDepFunction: function(){ return true; }
+  }
+});
+
+// now myModuleMocked has overridden dependencies for '../services/some/dep' and '../services/some/other/dep'
+```
+
+[See the example](/blob/master/example/entry.js)
+Run the example with:
+```
+$> npm install
+$> gulp compile
+$> node ./bin/main.bundle.js
+```
+
+## @todo: write unit tests!
+
 #### Existing proxy/mock/etc modules:
 * [inject-loader](https://github.com/plasticine/inject-loader)
 * [Squire.js](https://github.com/iammerrick/Squire.js/)
