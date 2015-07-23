@@ -28,8 +28,6 @@ $> gulp compile
 $> node ./bin/main.bundle.js
 ```
 
-## @todo: write unit tests!
-
 #### Existing proxy/mock/etc modules:
 * [inject-loader](https://github.com/plasticine/inject-loader)
 * [Squire.js](https://github.com/iammerrick/Squire.js/)
