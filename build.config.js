@@ -3,7 +3,7 @@
 var out = {
 	dirs: {
 		test: 'test',
-		source: 'src',
+		source: 'example',
 		build: 'build',
 		compile: 'bin',
 		nodeModule: 'node_modules'
