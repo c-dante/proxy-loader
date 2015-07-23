@@ -20,7 +20,7 @@ var myModuleMocked = MyModuleFactory({
 // now myModuleMocked has overridden dependencies for '../services/some/dep' and '../services/some/other/dep'
 ```
 
-[See the example](/blob/master/example/entry.js)
+[See the example](/example/entry.js)
 Run the example with:
 ```
 $> npm install
