@@ -28,10 +28,10 @@ describe('proxy-loader', function()
 
 			var cacheObjStr = extractCache(factory);
 
-			expect(cacheObjStr).to.include('\'module\': require(\'module\'');
-			expect(cacheObjStr).to.include('\'otherModule\': require(\'otherModule\'');
-			expect(cacheObjStr).to.include('\'lodash/map\': require(\'lodash/map\'');
-			expect(cacheObjStr).to.include('\'lodash/delay\': require(\'lodash/delay\'');
+			expect(cacheObjStr).to.include('\'module\':');
+			expect(cacheObjStr).to.include('\'otherModule\':');
+			expect(cacheObjStr).to.include('\'lodash/map\':');
+			expect(cacheObjStr).to.include('\'lodash/delay\':');
 
 			done();
 		});
@@ -42,10 +42,10 @@ describe('proxy-loader', function()
 
 			var cacheObjStr = extractCache(factory);
 
-			expect(cacheObjStr).to.include('\'module\': require(\'module\'');
-			expect(cacheObjStr).to.include('\'otherModule\': require(\'otherModule\'');
-			expect(cacheObjStr).to.include('\'lodash/map\': require(\'lodash/map\'');
-			expect(cacheObjStr).to.include('\'lodash/delay\': require(\'lodash/delay\'');
+			expect(cacheObjStr).to.include('\'module\':');
+			expect(cacheObjStr).to.include('\'otherModule\':');
+			expect(cacheObjStr).to.include('\'lodash/map\':');
+			expect(cacheObjStr).to.include('\'lodash/delay\':');
 
 			done();
 		});

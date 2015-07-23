@@ -25,7 +25,7 @@ var proxyLoader = function(source)
 	for (var key in cache)
 	{
 		var value = cache[key];
-		cacheToRequire.push('\'' + key + '\': require(\'' + value.name + '\')');
+		cacheToRequire.push('\'' + key + '\': function(){return require(\'' + value.name + '\');}');
 	}
 
 	results.push(cacheToRequire.join(',\n'));
@@ -46,7 +46,7 @@ var proxyLoader = function(source)
 			{
 				throw 'Could not find module: ' + moduleName;
 			}
-			return cache[moduleName];
+			return cache[moduleName]();
 		};
 
 		// Global module exporters
