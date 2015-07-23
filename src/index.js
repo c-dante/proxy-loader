@@ -1,7 +1,5 @@
 'use strict';
 
-var _ = require('lodash');
-
 var proxyLoader = function(source)
 {
 	var extract = /(require\s*\()['"]?([^\)'"]*)['"]?(\))/g;
@@ -23,12 +21,14 @@ var proxyLoader = function(source)
 		'var cache = {'
 	];
 
-	var cacheToReuire = _.map(cache, function(value, key)
+	var cacheToRequire = [];
+	for (var key in cache)
 	{
-		return '\'' + key + '\': require(\'' + value.name + '\')';
-	}).join(',\n');
+		var value = cache[key];
+		cacheToRequire.push('\'' + key + '\': require(\'' + value.name + '\')');
+	}
 
-	results.push(cacheToReuire);
+	results.push(cacheToRequire.join('\n'));
 	results.push('};');
 
 	// The injector function
@@ -87,6 +87,7 @@ var proxyLoader = function(source)
 		})();
 	}
 
+	// Grab the injection block's source and implant the module's source
 	var injectorBlock = injector.toString().replace('__INJECTION_POINT__', source);
 
 	results.push(injectorBlock);
@@ -95,9 +96,7 @@ var proxyLoader = function(source)
 		'module.exports = injector;'
 	];
 
-	results = results.concat(tail).join('\n');
-
-	return results;
+	return results.concat(tail).join('\n');
 };
 
 module.exports = proxyLoader;
