@@ -9,3 +9,4 @@ bin
 # IDE files
 *.sublime*
 .idea
+npm-debug.log
