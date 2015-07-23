@@ -16,5 +16,9 @@
     "run-sequence": "~1.1.2",
     "webpack": "~1.10.3",
     "chai": "~3.2.0"
-  }
+  },
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/c-dante/proxy-loader.git"
+	}
 }
