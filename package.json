@@ -1,6 +1,6 @@
 {
   "name": "proxy-loader",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "author": "Dante Federici <c.dante.federici@gmail.com",
   "license": "MIT",
   "description": "Injector wrapper for modules. Mock specific require dependencies with ease.",
