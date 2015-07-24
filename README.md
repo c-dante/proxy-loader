@@ -1,7 +1,7 @@
 # mockpack (proxy-loader)
 I really didn't like existing dependency injecting loaders and mocking when using AMD/CommonJS in a webpack environment.
 
-Using [webpack](//webpack.github.io) as a bundler with resolve loaders/plugins is great. Unit testing in that environment is less-great. So I wanted to make it as transparent as possible.
+Using [webpack](http://webpack.github.io) as a bundler with resolve loaders/plugins is great. Unit testing in that environment is less-great. So I wanted to make it as transparent as possible.
 
 Bundle your codebase with dependencies. Override modules to test as needed. Do this on the module level. The flatter the inheritance/dependency tree the better.
 
