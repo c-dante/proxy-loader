@@ -2,6 +2,7 @@
 
 var proxyLoader = function(source)
 {
+	if (this && this.cacheable) this.cacheable();
 	var extract = /(require\s*\()['"]?([^\)'"]*)['"]?(\))/g;
 
 	var cache = {};
@@ -96,7 +97,7 @@ var proxyLoader = function(source)
 	}
 
 	// Grab the injection block's source and implant the module's source
-	var injectorBlock = injector.toString().replace('__INJECTION_POINT__', source);
+	var injectorBlock = injector.toString().split('__INJECTION_POINT__').join(source);
 
 	results.push(injectorBlock);
 

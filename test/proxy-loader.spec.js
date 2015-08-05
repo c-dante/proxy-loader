@@ -72,6 +72,15 @@ describe('proxy-loader', function()
 		});
 	});
 
+	describe('Bugs', function()
+	{
+		// Old code has string.replace which has special characters
+		it('should not break when the srouce code has $ characters', function(done)
+		{
+			done();
+		});
+	});
+
 	// Test strings
 	var validCommonJs = '\'use strict\'' +
 		'var x = require(\'module\'),' +
@@ -80,6 +89,7 @@ describe('proxy-loader', function()
 		'	map: require(\'lodash/map\')' +
 		'	delay: require(\'lodash/delay\')' +
 		'}' +
+		'var valid = \'string($\' + 500 + \')\';' +
 		'module.exports = \'string\'';
 
 	var validAMD = '\'use strict\'' +
