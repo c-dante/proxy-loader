@@ -38,7 +38,7 @@ var proxyLoader = function(source)
 		// Override require
 		var require = function(moduleName)
 		{
-			if (inject[moduleName])
+			if (inject && inject[moduleName])
 			{
 				return inject[moduleName];
 			}
