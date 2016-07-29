@@ -52,6 +52,7 @@ var proxyLoader = function(source)
 
 		// Global module exporters
 		var module = {exports: {}};
+		var exports = module.exports;
 
 		// A getter that can switch between CommonJS or AMD
 		var getResult = function()
