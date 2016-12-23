@@ -1,4 +1,11 @@
-# mockpack (proxy-loader)
+# Deprecation
+**This loader is no longer supported.** This library's method DOES NOT WORK for ES6 imports!!
+
+See [c-dante/mockpack](https://github.com/c-dante/mockpack).
+That library works by taking advantage of Webpack's module loader at runtime to re-instantiate modules with runtime injected imports/requires.
+I also support ES6 with mockpack, and intend to support Webpack 2.0 if possible.
+
+# proxy-loader
 I really didn't like existing dependency injecting loaders and mocking when using AMD/CommonJS in a webpack environment.
 
 Using [webpack](http://webpack.github.io) as a bundler with resolve loaders/plugins is great. Unit testing in that environment is less-great. So I wanted to make it as transparent as possible.
