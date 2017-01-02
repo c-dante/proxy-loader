@@ -1,5 +1,5 @@
 # Deprecation
-**This loader is no longer supported.** This library's method DOES NOT WORK for ES6 imports!!
+**This loader is no longer supported.**
 
 See [c-dante/mockpack](https://github.com/c-dante/mockpack).
 That library works by taking advantage of Webpack's module loader at runtime to re-instantiate modules with runtime injected imports/requires.
